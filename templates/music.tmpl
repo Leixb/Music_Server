@@ -1,0 +1,11 @@
+{{ template "header.tmpl" .Name }}
+    <div>
+        <ul>
+            {{ range .Contents }}
+                <li>
+                    <a href="{{ . }}">{{.}}</a>
+                </li>
+            {{ end }}
+        </ul>
+    </div>
+{{ template "footer.tmpl" }}

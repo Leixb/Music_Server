@@ -1,0 +1,18 @@
+{{ template "header.tmpl" .Name }}
+<div>
+    <table>
+        {{ range .Contents }}
+            <tr>
+                <td class="cover">
+                    <a href="{{ . }}">
+                        <img src="/a{{ $.Link }}{{ . }}/cover.jpg">
+                    </a>
+                </td>
+                <td class="albumtitle">
+                    <a href="{{ . }}">{{.}}</a>
+                </td>
+            </tr>
+        {{ end }}
+    </table>
+</div>
+{{ template "footer.tmpl" }}

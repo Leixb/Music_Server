@@ -1,0 +1,19 @@
+{{ template "header.tmpl" .Name }}
+<div>
+    <div class="cover">
+        <img src="/a{{ .Link }}cover.jpg" alt=".Name">
+    </div>
+    <ul>
+        {{ range .Contents }}
+            <li>
+                <a href="/a{{ $.Link }}{{ . }}">{{.}}</a>
+            </li>
+        {{ end }}
+        <li class="download">
+            <form action="/d{{ .Link }}">
+                <button type="submit">Download</button>
+            </form>
+        </li>
+    </ul>
+</div>
+{{ template "footer.tmpl" }}

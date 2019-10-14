@@ -1,0 +1,158 @@
+
+html {
+    background: linear-gradient(darkred, black) fixed;
+    font-family: helvetica;
+    height: 100%;
+}
+
+body {
+    margin-top: 70px;
+}
+
+div.cover img {
+    width: 500px;
+    display: block;
+    /*margin-top: 1em;*/
+}
+
+div.cover {
+    margin: 0 auto 0;
+    width: 500px;
+    padding: 0.5em;
+    background: darkred;
+}
+
+.navbar h1 {
+    text-align: center;
+    line-height: 50px;
+    font-size: 2.5vw;
+
+    position: fixed;
+    height: 50px;
+    margin: 0;
+    top: 0;
+    left: 0;
+
+    background: black;
+    color: white;
+
+    padding: 10px;
+    width: 100%;
+}
+
+.navbar h1 a {
+    color: white;
+}
+.navbar h1 a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.content {
+    width: 60%;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    background: white;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+tr {
+    padding: 10em;
+    margin: 0;
+    height: 100px;
+}
+
+td {
+    padding: 1em;
+    margin: 0;
+}
+
+td img {
+    display: block;
+    width: 100px;
+}
+
+td.cover {
+    width: 100px;
+}
+
+td.albumtitle {
+    font-size: 2vw;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a {
+    color: darkred;
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    padding: 1em;
+    text-align: center;
+}
+
+li {
+    padding: 0.5em;
+}
+
+button {
+    padding: 0.5em 2em;
+    font-size: 2vh;
+    background: darkred;
+}
+
+button:hover {
+    background: green;
+}
+
+button:active {
+    background: darkblue;
+}
+
+form {
+    padding: 2em;
+}
+
+form input {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 3em;
+}
+
+form button {
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.msg {
+
+    margin: 50px;
+    padding: 50px;
+    text-align: center;
+    font-size: 4vw;
+}
+
+.msg.info p {
+    background: lightyellow;
+    padding: 40px;
+}
+
+.msg.error p {
+    background: #f88;
+    padding: 40px;
+}
