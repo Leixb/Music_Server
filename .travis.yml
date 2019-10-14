@@ -1,0 +1,31 @@
+language: go
+sudo: false
+env:
+  - PROG=jutge
+
+before_install:
+  - go get github.com/mitchellh/gox
+
+install:
+  - # skip
+
+script:
+  - go get -t -v ./...
+  - diff -u <(echo -n) <(gofmt -d .)
+  - go vet $(go list ./... | grep -v /vendor/)
+  - go test -v -race ./...
+    # Only build binaries from the latest Go release.
+  - if [ -n "$TRAVIS_TAG" ]; then gox -os="linux darwin windows" -arch="amd64" -output="${PROG}.{{.OS}}.{{.Arch}}" -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...; fi
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: DUf4iOcWrWhrznHIngyyBdi8FWBqSr5OZNLA1O2qIBQijjrdBvWfAoz7EjWKJPUrzt0gkn2Tmmgx4TDhzH45qTm2tK4UGc9gQpwFCTq8CfGNiHdz2uNjq8DY3RYHaMkre54p+ivLA8gE/4bv0nD1kV2pOQras+sKHrUC1gaHQBx5oVCT+WPGGD1IrxcF+U5bcMmSh2cZAcTJzEyPWXHO94dBhZWX3hRIvevV++iElUvrMKXPM+yw2hn3CG93yltr5gUqTD9PG+vO2mVX9oswzpVgJ5n+PCkbiwhDbm4pw1Hd8yNEh+XAlL0HlKyaMEwIkpEkPRsHaD6E9o0eGu22q8SySSnRe3P2obYsScbrknp/OhrgNiV1wAycegmxfwRXWpYeOb7BsRSs5YkiLLE+8DjOJK/SlXnucqbID7x4YA+le7+g1cVw+7Fd79ZVLmgGiQWID8cViHLOMg1AHCAYQ4YOckIfyeS1fjE8UDoYs7uV/9hM91ifH3t1beb32drJWte0p60FNM4ngiR+mk5AOnYKQtlElnp3aXsnqju2LxWrC+2vVV5lUBqdKC8bG5R7kvzesdbTzvjIkt+q7ZG44HPuFJHQZo8U/AT+Cbg6nji9Wmngqv63y1JXomH9qlaljiflcAZLBrli8OTYQYpHgTx2d+XPHhlZwIrvgHMCchU=
+  file:
+    - "${PROG}.windows.amd64.exe"
+    - "${PROG}.darwin.amd64"
+    - "${PROG}.linux.amd64"
+  on:
+    repo: Leixb/Music_Server
+    tags: true
